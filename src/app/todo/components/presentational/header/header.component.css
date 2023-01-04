@@ -1,0 +1,21 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header .to-do-text {
+  color: white;
+  font-size: 40px;
+  font-weight: 800;
+  letter-spacing: 10px;
+  padding: 15px 0px;
+}
+
+.header .switch-mode {
+  width: 30px;
+  height: 30px;
+  background-image: var(--switcher-theme);
+  background-repeat: no-repeat;
+}
+

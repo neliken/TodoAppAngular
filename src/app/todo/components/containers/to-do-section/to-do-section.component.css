@@ -1,0 +1,25 @@
+.to-do-section {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 20px;
+  gap: 25px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.to-do-section .todo {
+  width: calc(100% - 57px);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.to-do-section .todo span {
+  height: 30px;
+  width: 30px ;
+  background-image: url("src/assets/images/icon-cross.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  visibility: visible;
+}

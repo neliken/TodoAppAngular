@@ -1,0 +1,25 @@
+.new-to-do {
+  background-color: var(--background-todo);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 20px;
+  gap: 25px;
+  border-radius: 5px;
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+
+.new-to-do input {
+  all: unset;
+  cursor: pointer;
+}
+
+.new-to-do input::placeholder {
+  color: var(--dark-grayish-blue-dark-theme);
+  position: absolute;
+  top: 50%;
+  transform: translate(0%, -50%);
+}
+
+
