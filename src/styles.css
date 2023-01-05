@@ -1,1 +1,71 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&family=Manrope:wght@600;800&display=swap');
+
+:root {
+  --bright-blue: hsl(220, 98%, 61%);
+  --very-light-gray: hsl(0, 0%, 98%);
+  --very-light-grayish-blue: hsl(236, 33%, 92%);
+  --light-grayish-blue-light-theme: hsl(233, 11%, 84%);
+  --dark-grayish-blue-light-theme: hsl(236, 9%, 61%);
+  --very-dark-grayish-blue-light-theme: hsl(235, 19%, 35%);
+  --very-dark-blue: hsl(235, 21%, 11%);
+  --very-dark-desaturated-blue: hsl(235, 24%, 19%);
+  --light-grayish-blue-dark-theme: hsl(234, 39%, 85%);
+  --light-grayish-blue-dark-theme-hover: hsl(236, 33%, 92%);
+  --dark-grayish-blue-dark-theme: hsl(234, 11%, 52%);
+  --very-dark-grayish-blue-dark-theme1: hsl(233, 14%, 35%);
+  --very-dark-grayish-blue-dark-theme2: hsl(237, 14%, 26%);
+  --font-family: 'Josefin Sans', sans-serif;
+}
+
+body[data-theme='light'] {
+  --background-color: var(--very-light-grayish-blue);
+  --bg-image-desktop: url("./assets/images/bg-desktop-light.jpg");
+  --bg-image-mobile: url("./assets/images/bg-mobile-light.jpg");
+  --background-todo: var(--very-light-gray);
+  --switcher-theme: url("./assets/images/icon-moon.svg");
+  --color-text: var(--very-dark-desaturated-blue);
+  --border-color: var(--light-grayish-blue-light-theme);
+  --footerInfo: var(--dark-grayish-blue-light-theme);
+  --hover-color: var(--very-dark-grayish-blue-light-theme);
+}
+
+body[data-theme='dark'] {
+  --background-color: var(--very-dark-blue);
+  --bg-image-desktop: url("./assets/images/bg-desktop-dark.jpg");
+  --bg-image-mobile: url("./assets/images/bg-mobile-dark.jpg");
+  --background-todo: var(--very-dark-desaturated-blue);
+  --switcher-theme: url("./assets/images/icon-sun.svg");
+  --color-text: white;
+  --border-color: var(--very-dark-grayish-blue-dark-theme1);
+  --footerInfo: var(--very-dark-grayish-blue-dark-theme1);
+  --hover-color: white;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  background-image: var(--bg-image-mobile);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-color: var(--background-color);
+  font-family: var(--font-family);
+  color: var(--color-text);
+  font-size: 18px;
+}
+
+.root-container {
+  height: 100%;
+  width: 100%;
+}
+
+@media screen and (min-width: 600px) {
+  body {
+    background-image: var(--bg-image-desktop);
+  }
+}

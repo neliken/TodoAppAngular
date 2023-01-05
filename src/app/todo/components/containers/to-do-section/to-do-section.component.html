@@ -1,7 +1,7 @@
-<div class="to-do-section">
+<div class="to-do-section" *ngFor="let item of todoItems" [ngClass]="{'completed' : item.isCompleted === 1}">
   <app-checkbox></app-checkbox>
   <div class="to-do">
-    Read 30 minutes!
+    {{ item.title }}
     <span class="delete-icon"></span>
   </div>
 </div>

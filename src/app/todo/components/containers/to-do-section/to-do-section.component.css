@@ -7,7 +7,7 @@
   border-bottom: 1px solid var(--border-color);
 }
 
-.to-do-section .todo {
+.to-do-section .to-do {
   width: calc(100% - 57px);
   cursor: pointer;
   display: flex;
@@ -15,11 +15,32 @@
   justify-content: space-between;
 }
 
-.to-do-section .todo span {
+.to-do-section .to-do span {
   height: 30px;
   width: 30px ;
-  background-image: url("src/assets/images/icon-cross.svg");
+  background-image: url("../../../../../assets/images/icon-cross.svg");
   background-repeat: no-repeat;
   background-position: center;
   visibility: visible;
+}
+
+.to-do-section.completed ::ng-deep app-checkbox div {
+  background-image: url("src/assets/images/icon-check.svg"), linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.to-do-section.completed .to-do {
+  color: var(--dark-grayish-blue-dark-theme);
+  text-decoration: line-through;
+}
+
+.to-do-section:hover .to-do .delete-icon {
+  visibility: visible;
+}
+
+@media screen and (min-width: 600px) {
+  .to-do-section .to-do span {
+    visibility: hidden;
+  }
 }
