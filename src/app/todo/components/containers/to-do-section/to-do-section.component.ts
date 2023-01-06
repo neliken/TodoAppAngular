@@ -17,5 +17,8 @@ export class ToDoSectionComponent implements OnInit {
       this.todoItems = items;
       console.log(this.todoItems);
     })
+    // setTimeout(() => {
+    //   this.todoItems.push({id: 3, title: 'hey', isCompleted:true})
+    // },4000)
   }
 }

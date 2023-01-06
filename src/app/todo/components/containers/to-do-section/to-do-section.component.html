@@ -1,4 +1,9 @@
-<div class="to-do-section" *ngFor="let item of todoItems" [ngClass]="{'completed' : item.isCompleted === 1}">
+<div
+   #myDiv class="to-do-section"
+   *ngFor="let item of todoItems"
+   [ngClass]="{'completed' : item.isCompleted === true}"
+   (click)="myDiv.classList.toggle('completed') && !item.isCompleted"
+>
   <app-checkbox></app-checkbox>
   <div class="to-do">
     {{ item.title }}

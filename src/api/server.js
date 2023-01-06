@@ -1,9 +1,9 @@
+const Prisma = require('prisma/prisma-client');
 const express = require('express');
-// const bodyParser = require('body-parser');
 const cors = require('cors');
-const sqlite3 = require('sqlite3');
 
 const app = express();
+const prisma = new Prisma.PrismaClient();
 
 app.use(cors({
   origin: '*',
@@ -11,29 +11,24 @@ app.use(cors({
 
 app.use(express.json())
 
-let db = new sqlite3.Database('C:/sqlite/database.db', (err) => {
-  if(err) {
-    return console.log(err.message);
-  } else {
-    console.log("Connected to the database.");
-  }
-});
-
 async function getAllTodoItems() {
-  return new Promise((resolve, reject) => {
-    db.serialize( function () {
-      db.all("SELECT * FROM todoItems", function (err, row) {
-        // console.log(row);
-        resolve(row);
-      })
-    })
-  })
+  return prisma.todoItems.findMany();
 }
 
-app.get("/items", (req, res) => {
-  getAllTodoItems().then(d => res.end(JSON.stringify(d)))
+app.get("/items", async (req, res) => {
+  let items = await getAllTodoItems()
+
+  res.end(JSON.stringify(items))
 })
 
-let port = 4000;
+app.post('/addItem', async (req, res) => {
+  // let parsedData = JSON.stringify(req.body);
+  await prisma.todoItems.create({
+    data: req.body,
+  })
+  res.status(201).end();
+})
 
+
+let port = 4000;
 app.listen(port);
