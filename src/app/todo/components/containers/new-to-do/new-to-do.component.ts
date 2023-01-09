@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, EventEmitter, Output, ViewChild} from '@angular/core';
 import { ItemsService } from "../../../items.service";
 
 @Component({
@@ -7,14 +7,21 @@ import { ItemsService } from "../../../items.service";
   styleUrls: ['./new-to-do.component.css']
 })
 export class NewToDoComponent {
-  title: string = '';
+  @Output("onInputChange")
+  onInputChange: EventEmitter<string> = new EventEmitter<string>();
+  @ViewChild("input") inputVar: any;
 
   constructor(private itemsService: ItemsService) {
   }
-  getInput(event: any) {
-    this.title = event.target.value;
-    let value = event.target.value;
-    event.target.value = '';
-    this.itemsService.addTodoItem({title: value})
+
+  async getInput(event: any) {
+    let { value } = event.target;
+
+    this.onInputChange.emit(value);
+    this.resetInput();
+  }
+
+  resetInput() {
+    this.inputVar.nativeElement.value = "";
   }
 }

@@ -1,12 +1,14 @@
 <div
    #myDiv class="to-do-section"
    *ngFor="let item of todoItems"
-   [ngClass]="{'completed' : item.isCompleted === true}"
-   (click)="myDiv.classList.toggle('completed') && !item.isCompleted"
 >
-  <app-checkbox></app-checkbox>
+  <app-checkbox
+    (click)="myDiv.classList.toggle('completed') && !item.isCompleted && toggleCheckbox(item.isCompleted)"
+  ></app-checkbox>
   <div class="to-do">
-    {{ item.title }}
-    <span class="delete-icon"></span>
+    <div
+      (click)="myDiv.classList.toggle('completed') && !item.isCompleted"
+    > {{ item.title }} </div>
+    <span class="delete-icon" (click)="getIdItem(item.id)" ></span>
   </div>
 </div>

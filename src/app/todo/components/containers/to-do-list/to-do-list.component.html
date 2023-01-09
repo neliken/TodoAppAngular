@@ -1,4 +1,4 @@
 <div class="to-do-list" id="to-do-list">
-  <app-to-do-section></app-to-do-section>
+  <app-to-do-section [todoItems]="todoItems" (onDeleteItem)="deleteItem($event)"></app-to-do-section>
   <app-todos-footer></app-todos-footer>
 </div>

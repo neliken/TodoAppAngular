@@ -7,18 +7,25 @@ import { Item } from "./item";
 })
 
 export class ItemsService {
-  url = "http://localhost:4000/";
+  url = "http://localhost:4000";
   items: Item[] = [];
 
   constructor(private http: HttpClient) {
   }
 
-  getTodoItems() {
-    return this.http.get(`${this.url}`+ `items`);
+  getTodoItems<T>() {
+    return this.http.get<T>(`${this.url}/items`);
   }
 
-  addTodoItem(item: any) {
-    console.log(item)
-    return this.http.post(`${this.url}`+ `addItem`, item);
+  addTodoItem(item: Item) {
+    return this.http.post<{ todo: Item }>(`${this.url}/todo`, item, {
+      headers: {
+        'content-type': 'application/json'
+      }
+    })
+  }
+
+  deleteTodoItem(id: number) {
+    return this.http.delete(`${this.url}/todo/${id}`);
   }
 }

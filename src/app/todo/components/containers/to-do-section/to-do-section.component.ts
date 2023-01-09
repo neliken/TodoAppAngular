@@ -1,24 +1,22 @@
-import { Component, OnInit } from '@angular/core';
-import { ItemsService } from "../../../items.service";
-// import { Items } from "../../../items";
+import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Item} from "../../../item";
 
 @Component({
   selector: 'app-to-do-section',
   templateUrl: './to-do-section.component.html',
   styleUrls: ['./to-do-section.component.css']
 })
-export class ToDoSectionComponent implements OnInit {
-  todoItems: any = [];
-  constructor( private itemsService: ItemsService) {
-  }
+export class ToDoSectionComponent {
+  @Input() todoItems: Item[] = [];
 
-  ngOnInit(){
-    this.itemsService.getTodoItems().subscribe((items) => {
-      this.todoItems = items;
-      console.log(this.todoItems);
-    })
-    // setTimeout(() => {
-    //   this.todoItems.push({id: 3, title: 'hey', isCompleted:true})
-    // },4000)
+  @Output("onDeleteItem")
+  onDeleteItem: EventEmitter<number> = new EventEmitter<number>();
+
+  getIdItem(id: number = 0) {
+    this.onDeleteItem.emit(id);
+  }
+  toggleCheckbox(isCompleted: any) {
+    console.log(isCompleted)
+    console.log(this.todoItems)
   }
 }
