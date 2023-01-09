@@ -21,14 +21,42 @@ app.get("/items", async (req, res) => {
   res.end(JSON.stringify(items))
 })
 
-app.post('/addItem', async (req, res) => {
-  // let parsedData = JSON.stringify(req.body);
-  await prisma.todoItems.create({
-    data: req.body,
+app.post('/todo', async (req, res) => {
+  let item = req.body;
+
+  console.log(item);
+
+  const todo = await prisma.todoItems.create({
+    data: {
+      title: item.title
+    },
   })
-  res.status(201).end();
+
+  res.json({
+    todo
+  })
+})
+
+app.delete('/todo/:id',async (req, res) => {
+  const id = parseInt(req.params.id);
+
+  await prisma.todoItems.delete({
+    where: {
+      id: id,
+    }
+  })
 })
 
 
+
 let port = 4000;
-app.listen(port);
+app.listen(port, () => {
+  console.log("Application started on port: " + port);
+});
+
+/*
+add
+get
+delete
+
+ */
