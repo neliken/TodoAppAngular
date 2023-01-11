@@ -7,16 +7,19 @@ import {Item} from "../../../item";
   styleUrls: ['./to-do-section.component.css']
 })
 export class ToDoSectionComponent {
-  @Input() todoItems: Item[] = [];
+  @Input() filteredTodoItems: Item[] = [];
 
   @Output("onDeleteItem")
   onDeleteItem: EventEmitter<number> = new EventEmitter<number>();
 
+  @Output("onChangedItem")
+  onChangedItem: EventEmitter<Item> = new EventEmitter<Item>();
+
   getIdItem(id: number = 0) {
     this.onDeleteItem.emit(id);
   }
-  toggleCheckbox(isCompleted: any) {
-    console.log(isCompleted)
-    console.log(this.todoItems)
+
+  toggleCheckbox(item: Item) {
+    this.onChangedItem.emit(item);
   }
 }

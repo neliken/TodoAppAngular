@@ -5,6 +5,7 @@
   padding: 20px;
   gap: 25px;
   border-bottom: 1px solid var(--border-color);
+  background-color: var(--background-todo);
 }
 
 .to-do-section .to-do {
@@ -22,6 +23,10 @@
   background-repeat: no-repeat;
   background-position: center;
   visibility: visible;
+}
+
+.to-do-section .to-do .to-do-title {
+width: 100%;
 }
 
 .to-do-section.completed ::ng-deep app-checkbox div {

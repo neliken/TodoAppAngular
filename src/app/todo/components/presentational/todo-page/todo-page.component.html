@@ -1,4 +1,4 @@
 <app-header title="TODO"></app-header>
 <app-new-to-do (onInputChange)="onInputChange($event)"></app-new-to-do>
-<app-to-do-list [todoItems]="todoItems"  (onDeleteItem)="onDeleteItem($event)"></app-to-do-list>
+<app-to-do-list [filteredTodoItems]="filteredTodoItems" [nrOfItems]="nrOfItem()"  (onDeleteItem)="onDeleteItem($event)" (onChangedItem)="onChangedItem($event)"  (onFilterChange)="onFilterChange($event)" (onDeleteItems)="onDeleteItems()"></app-to-do-list>
 <div class="footer-info">Drag and drop to reorder list</div>

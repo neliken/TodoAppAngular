@@ -7,3 +7,14 @@
   justify-content: space-between;
   color: var(--color-text)
 }
+
+.hidden_scrollbar {
+  overflow-y: scroll;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+}
+.hidden_scrollbar::-webkit-scrollbar {
+  /* WebKit */
+  width: 0;
+  height: 0;
+}

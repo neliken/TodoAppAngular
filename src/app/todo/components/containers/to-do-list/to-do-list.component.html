@@ -1,4 +1,6 @@
-<div class="to-do-list" id="to-do-list">
-  <app-to-do-section [todoItems]="todoItems" (onDeleteItem)="deleteItem($event)"></app-to-do-section>
-  <app-todos-footer></app-todos-footer>
+<div class="to-do-list" cdkDropList>
+  <cdk-virtual-scroll-viewport class="to-do-list hidden_scrollbar"  itemSize="100%" >
+    <app-to-do-section [filteredTodoItems]="filteredTodoItems" (onDeleteItem)="deleteItem($event)" (onChangedItem)="changedItem($event)"></app-to-do-section>
+  </cdk-virtual-scroll-viewport>
+  <app-todos-footer [nrOfItems]="nrOfItems"  (onFilterChange)="onFilter($event)" (onDeleteItems)="deleteItems()"></app-todos-footer>
 </div>

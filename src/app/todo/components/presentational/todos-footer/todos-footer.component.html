@@ -1,9 +1,9 @@
 <div class="list-info">
-  <div><span id="nr-of-items">0</span> items left</div>
-  <div class="categories-desktop" id="categories-desktop">
-    <div class="show-all-trigger">All</div>
-    <div class="show-active-trigger">Active</div>
-    <div class="show-completed-trigger">Completed</div>
+  <div><span id="nr-of-items">{{ nrOfItems }}</span> items left</div>
+  <div class="categories-desktop">
+    <div class="show-all-trigger" [ngClass]="{'active': currentFilterAction == FilterType.All}" (click)="onFilter(FilterType.All)">All</div>
+    <div class="show-active-trigger" [ngClass]="{'active': currentFilterAction == FilterType.Active}" (click)="onFilter(FilterType.Active)">Active</div>
+    <div class="show-completed-trigger" [ngClass]="{'active': currentFilterAction == FilterType.Completed}" (click)="onFilter(FilterType.Completed)">Completed</div>
   </div>
-  <div class="clear" id="delete-all-trigger">Clear Completed</div>
+  <div class="clear" (click)="onClearAll()">Clear Completed</div>
 </div>

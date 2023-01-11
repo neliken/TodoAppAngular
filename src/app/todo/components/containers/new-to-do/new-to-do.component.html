@@ -1,6 +1,4 @@
 <div class="new-to-do">
   <app-checkbox></app-checkbox>
-<!--  <form>-->
-    <input #input type="text" placeholder="Create a new todo..." (keyup.enter)="getInput($event)">
-<!--  </form>-->
+    <input type="text" placeholder="Create a new todo..." [formControl]="inputTodoItem" (keyup.enter)="getInput($event)">
 </div>

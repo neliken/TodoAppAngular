@@ -11,20 +11,14 @@ app.use(cors({
 
 app.use(express.json())
 
-async function getAllTodoItems() {
-  return prisma.todoItems.findMany();
-}
-
-app.get("/items", async (req, res) => {
-  let items = await getAllTodoItems()
+app.get("/todo", async (req, res) => {
+  let items = await prisma.todoItems.findMany();
 
   res.end(JSON.stringify(items))
 })
 
 app.post('/todo', async (req, res) => {
   let item = req.body;
-
-  console.log(item);
 
   const todo = await prisma.todoItems.create({
     data: {
@@ -34,6 +28,19 @@ app.post('/todo', async (req, res) => {
 
   res.json({
     todo
+  })
+})
+
+app.put('/todo/:id', async (req, res) => {
+  const item = req.body;
+
+  await prisma.todoItems.update({
+    where: {
+      id: parseInt(item.id),
+    },
+    data: {
+      isCompleted: item.isCompleted
+    }
   })
 })
 
@@ -47,16 +54,16 @@ app.delete('/todo/:id',async (req, res) => {
   })
 })
 
+app.delete('/todo',async (req, res) => {
 
+  await prisma.todoItems.deleteMany({
+    where: {
+      isCompleted: true,
+    }
+  })
+})
 
 let port = 4000;
 app.listen(port, () => {
   console.log("Application started on port: " + port);
 });
-
-/*
-add
-get
-delete
-
- */

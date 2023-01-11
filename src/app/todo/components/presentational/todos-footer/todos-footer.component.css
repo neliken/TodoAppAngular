@@ -27,6 +27,9 @@
   padding: 20px;
   gap: 10px;
 }
+.list-info .categories-desktop .active {
+  color: hsl(220, 98%, 61%);
+}
 
 .list-info .clear {
   text-decoration: none;
@@ -36,14 +39,6 @@
   cursor: pointer;
   color: var(--hover-color);
 }
-
-.footer-info {
-  align-self: center;
-  font-size: 15px;
-  color: var(--footerInfo);
-  margin-top: 20px;
-}
-
 
 @media screen and (min-width: 600px) {
   .list-info .categories-desktop {

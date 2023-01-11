@@ -13,6 +13,7 @@
 .new-to-do input {
   all: unset;
   cursor: pointer;
+  width: 100%;
 }
 
 .new-to-do input::placeholder {

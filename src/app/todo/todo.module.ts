@@ -11,7 +11,10 @@ import {routes} from "./routes";
 import { TodosFooterComponent } from './components/presentational/todos-footer/todos-footer.component';
 import { TodoPageComponent } from './components/presentational/todo-page/todo-page.component';
 import { HttpClientModule } from "@angular/common/http";
-
+import { ReactiveFormsModule } from "@angular/forms";
+import {ScrollingModule} from "@angular/cdk/scrolling";
+import {MatCardModule} from "@angular/material/card";
+import {DragDropModule} from "@angular/cdk/drag-drop";
 
 @NgModule({
   declarations: [
@@ -22,7 +25,7 @@ import { HttpClientModule } from "@angular/common/http";
     CheckboxComponent,
     ToDoSectionComponent,
     TodosFooterComponent,
-    TodoPageComponent
+    TodoPageComponent,
   ],
   exports: [
     ToDoContainerComponent
@@ -30,7 +33,11 @@ import { HttpClientModule } from "@angular/common/http";
   imports: [
     CommonModule,
     HttpClientModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    ReactiveFormsModule,
+    ScrollingModule,
+    MatCardModule,
+    DragDropModule
   ]
 })
 export class TodoModule {

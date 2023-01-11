@@ -1,14 +1,16 @@
-<div
-   #myDiv class="to-do-section"
-   *ngFor="let item of todoItems"
+<mat-card
+  *ngFor="let item of filteredTodoItems"
+  class="to-do-section"
+  [ngClass]="{'completed' : item.isCompleted}"
+  cdkDrag
 >
-  <app-checkbox
-    (click)="myDiv.classList.toggle('completed') && !item.isCompleted && toggleCheckbox(item.isCompleted)"
-  ></app-checkbox>
-  <div class="to-do">
-    <div
-      (click)="myDiv.classList.toggle('completed') && !item.isCompleted"
-    > {{ item.title }} </div>
-    <span class="delete-icon" (click)="getIdItem(item.id)" ></span>
-  </div>
-</div>
+    <app-checkbox
+      (click)="toggleCheckbox(item)"
+    ></app-checkbox>
+    <div class="to-do">
+      <div (click)="toggleCheckbox(item)" class="to-do-title">
+        {{ item.title }}
+      </div>
+      <span class="delete-icon" (click)="getIdItem(item.id)" ></span>
+    </div>
+</mat-card>
